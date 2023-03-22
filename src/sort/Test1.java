@@ -13,13 +13,7 @@ public class Test1 {
             strArr[i]= Integer.toString(numbers[i]);
         }
         Arrays.sort(strArr,(a,b)->{
-            int first = Integer.parseInt(a+b);
-            int second =  Integer.parseInt(b+a);
-            if(second > first){
-                return 1;
-            }else{
-                return -1;
-            }
+            return (b+a).compareTo(a+b);
         });
         //System.out.println(Arrays.toString(strArr));
         /*for(int i=0; i<strArr.length-1; i++){
