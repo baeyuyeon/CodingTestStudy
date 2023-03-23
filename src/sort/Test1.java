@@ -15,6 +15,16 @@ public class Test1 {
         Arrays.sort(strArr,(a,b)->{
             return (b+a).compareTo(a+b);
         });
+
+        int i=1;
+        int j=2;
+        Integer[] arr = {1,2};
+        Arrays.sort(arr, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return  o1-o2;
+            }
+        });
         //System.out.println(Arrays.toString(strArr));
         /*for(int i=0; i<strArr.length-1; i++){
             if(strArr.length>1 && strArr[i].charAt(0)==strArr[i+1].charAt(0)){
