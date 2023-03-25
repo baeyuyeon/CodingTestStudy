@@ -18,6 +18,7 @@ public class Permutation {
             for(int i=1; i<=n; i++) {
                 if(chosen[i]) continue; // 이미 뽑은 경우는 SKIP
 
+
                 chosen[i] = true; // 포함
                 stack.push(i);
 
