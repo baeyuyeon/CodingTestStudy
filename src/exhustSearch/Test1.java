@@ -1,4 +1,4 @@
-package dfs;
+package exhustSearch;
 
 import java.util.*;
 class Test1 {

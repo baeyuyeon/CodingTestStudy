@@ -1,4 +1,4 @@
-package dfs;
+package exhustSearch;
 
 class Test2 {
     public int[] solution(int brown, int yellow) {
