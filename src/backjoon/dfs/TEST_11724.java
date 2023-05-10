@@ -19,14 +19,7 @@ public class TEST_11724 {
     public static void main(String[] args) throws IOException {
         TEST_11724 test = new TEST_11724();
 
-        /*int[][] input = {
-                {6 ,5}
-                ,{1, 2}
-                ,{2, 5}
-                ,{5, 1}
-                ,{3, 4}
-                ,{4, 6}
-        };*/
+        /*n */
         /*int[][] input = {
                 {6, 8}
                 ,{1, 2}
