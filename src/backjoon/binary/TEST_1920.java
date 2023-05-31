@@ -3,6 +3,7 @@ package backjoon.binary;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -36,53 +37,69 @@ public class TEST_1920 {
 
         TEST_1920 test = new TEST_1920();
 
-        int[] result = test.solution(N, arrN, M, arrM);
+        int[] result = test.my_solution(N, arrN, M, arrM);
         for (int i : result) {
             System.out.println(i);
         }
 
     }
 
-    public int[] solution(int N, int[] arrN, int M, int[] arrM) {
-        int result[] = new int[M];
-
+    public int[] my_solution(int N, int[] arrN, int M, int[] arrM) {
+        int[] result = new int[M];
         Arrays.sort(arrN);
+        for (int i = 0; i < arrM.length; i++) {
+            int startIndex = 0;
+            int endIndex = arrN.length - 1;
+            boolean find = false;
+            while (startIndex <= endIndex) {
+                int middleIndex = (startIndex + endIndex) / 2;
+                if (arrM[i] < arrN[middleIndex]) {
+                    endIndex = middleIndex - 1;
+                } else if (arrM[i] > arrN[middleIndex]) {
+                    startIndex = middleIndex + 1;
+                } else {
+                    find = true;
+                    break;
+                }
+            }
+            result[i] = find == true ? 1 : 0;
+        }
+        return result;
+    }
 
+
+
+
+
+
+
+
+
+        public int[] solution_teacher(int N, int[] arrN, int M, int[] arrM) {
+        Arrays.sort(arrN);
+        int result[] = new int[M];
         for (int i = 0; i < M; i++) {
-            result[i] = find(arrN, arrM[i]);
+            boolean find = false;
+            int target = arrM[i];
+            int start = 0;
+            int end = arrN.length-1;
+            while (start <= end) {
+                int mid_index = (start + end) / 2;
+                int mid_value = arrN[mid_index];
+                if (mid_value > target) {
+                    end = mid_index - 1;
+                } else if (mid_value < target) {
+                    start = mid_index + 1;
+                }else{
+                    find = true;
+                    break;
+                }
+            }
+            result[i] = (find == true) ? 1 : 0;
         }
-
         return result;
+
     }
 
-    public int find(int[] tempArr, int findData) {
 
-        int result = 0;
-
-        if (tempArr.length <= 1) {
-            if (tempArr[0] == findData) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-        int middle = tempArr.length / 2;
-        if (findData < tempArr[middle]) {
-            int[] downArr = new int[middle];
-            for (int i = 0; i <= middle - 1; i++) {
-                downArr[i] = tempArr[i];
-            }
-            return find(downArr, findData);
-        } else if (findData > tempArr[middle]) {
-            int[] upArr = new int[middle];
-            for (int i = middle+1; i < tempArr.length; i++) {
-                upArr[i-(middle + 1)] = tempArr[i];
-            }
-            return find(upArr, findData);
-        } else if (findData == tempArr[middle]) {
-            result = 1;
-        }
-
-        return result;
-    }
 }
