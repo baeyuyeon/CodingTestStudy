@@ -10,6 +10,9 @@ import java.util.StringTokenizer;
 //수 찾기 문제(메모리 초과남)
 public class TEST_1920 {
 
+
+
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
