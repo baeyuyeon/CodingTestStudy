@@ -5,58 +5,73 @@ import java.io.InputStreamReader;
 import java.util.*;
 //1717 집합의 표현 문제
 public class TEST_1717 {
-    Map<Integer,Integer> map = new HashMap<>();
+    //Map<Integer,Integer> map = new HashMap<>();
+    static int parent[] = null;
 
     public static void main(String[] args) throws IOException {
 
         TEST_1717 test = new TEST_1717();
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
         test.init(n);
-        int m = Integer.parseInt(st.nextToken());
+        int m = sc.nextInt();
+
         for(int i=0; i<m; i++){
-            st =new StringTokenizer(br.readLine());
-            int flagNum = Integer.parseInt(st.nextToken());
-            int first = Integer.parseInt(st.nextToken());
-            int second = Integer.parseInt(st.nextToken());
+            int flagNum =  sc.nextInt();
+            int first =sc.nextInt();
+            int second = sc.nextInt();
             if(flagNum==0){
                 test.union(first,second);
             }else{
-                System.out.println(test.getResult(first,second));
+                if(test.getResult(first,second)){
+                    System.out.println("YES");
+                }else{
+                    System.out.println("NO");
+                }
             }
 
         }
     }
     //초기화
     public void init(int n){
+        parent = new int[n+1];
         for(int i=0; i<=n; i++){
-            map.put(i,i);
+            //map.put(i,i);
+            parent[i]=i;
         }
     }
     //union
     public void union(int first, int second){
-        map.put(first,find(Math.min(first, second)));
-        map.put(second,find(Math.min(first, second)));
+        if (first < second) {
+            //map.put(second,find(first));
+            parent[second] =find(first);
+        }else{
+            //map.put(first,find(second));
+            parent[first] =find(second);
+        }
+
     }
     //find
     public int find(int num){
 
-        if(map.get(num)==num){
+        //if(map.get(num)==num){
+        if(parent[num]==num){
             return num;
         }
-        int result = find(map.get(num));
-        map.put(num, result);
+        /*int result = find(map.get(num));
+        map.put(num, result);*/
+        int result = find(parent[num]);
+        parent[num] = result;
+
         return result;
     }
 
 
-    public String getResult(int first, int second) {
+    public boolean getResult(int first, int second) {
         if (find(first) == find(second)) {
-            return "YES";
+            return true;
         }
-        return "NO";
+        return false;
     }
 
 }
