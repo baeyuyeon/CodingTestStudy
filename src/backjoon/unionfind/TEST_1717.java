@@ -42,6 +42,15 @@ public class TEST_1717 {
     }
     //union
     public void union(int first, int second){
+        /*if (first < second) {
+            //map.put(second,find(first));
+            parent[second] =find(first);
+        }else{
+            //map.put(first,find(second));
+            parent[first] =find(second);
+        }*/
+        first = find(first);
+        second = find(second);
         if (first < second) {
             //map.put(second,find(first));
             parent[second] =find(first);

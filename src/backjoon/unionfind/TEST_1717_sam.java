@@ -1,6 +1,7 @@
 package backjoon.unionfind;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -43,6 +44,7 @@ public class TEST_1717_sam {
         if (first != second) {
             parent[second] = first;
         }
+        System.out.println("parent = " + Arrays.toString(parent));
     }
     //find
     public static int find(int num){
