@@ -27,36 +27,13 @@ public class TEST_1593 {
         System.out.println(solution2(n, m, nStr, mStr));
     }
 
-    //첫번째 솔루션. 메모리 초과
-    private static int solution(int n, int m, String nStr, String mStr) {
-        int result = 0;
-        Set<String> set = new HashSet<>();
-        for (int i = 0; i < n; i++) {
-            set.add(nStr.substring(i, i + 1));
-
-        }
-        for (int i = 0; i < m - n; i++) {
-            boolean chk = true;
-            for (int j = i; j < i + n; j++) {
-                if (!set.contains(mStr.substring(j, j + 1))) {
-                    chk = false;
-                    break;
-                }
-            }
-            if (chk) {
-                result++;
-            }
-        }
-
-        return result;
-    }
     //두번째 솔루션.
     private static int solution2(int n, int m, String nStr, String mStr) {
         int result = 0;
         for (int i = 0; i < n; i++) {
             map.put(nStr.substring(i, i + 1), 0);
         }
-
+        System.out.println("map1 = " + map);
         for (int i = 0; i < n; i++) {
             String temp = mStr.substring(i, i + 1);
             if (map.containsKey(temp)) {
@@ -72,6 +49,7 @@ public class TEST_1593 {
             result++;
         }
 
+        System.out.println("map2 = " + map);
         for (int i = n; i < m ; i++) {
             int start = i - n;
             String temp = mStr.substring(start, start + 1);
