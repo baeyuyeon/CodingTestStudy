@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //기능개발
-public class Solution0831 {
+public class Solution_0831 {
 
     public static void main(String[] args) {
 /*
