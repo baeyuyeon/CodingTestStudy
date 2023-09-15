@@ -13,7 +13,7 @@ public class Solution_0914_1 {
     }
 
     public static String[] solution(String[][] plans) throws ParseException {
-        SimpleDateFormat sdformat = new SimpleDateFormat("hhmm");
+        SimpleDateFormat sdformat = new SimpleDateFormat("HHmm");
         Calendar cal = Calendar.getInstance();
         List<String> answer = new ArrayList<>();
         Queue<Work> queue = new PriorityQueue<>((a, b) -> {
@@ -34,12 +34,18 @@ public class Solution_0914_1 {
             Date beforeEndTime = sdformat.parse(Integer.toString(beforeWork.start));
             cal.setTime(beforeEndTime);
             cal.add(Calendar.MINUTE, beforeWork.workTime);
-            System.out.print(beforeWork.workTime + ",");
             endTime = sdformat.format(cal.getTime());
-            System.out.println(endTime);
+
             if (Integer.parseInt(endTime) > pollWork.start) {
+                cal.add(Calendar.MINUTE, -pollWork.start);
+                endTime = sdformat.format(cal.getTime());
+                beforeWork.workTime = Integer.parseInt(endTime);
                 stack.push(beforeWork);
             } else {
+                /*while (!stack.isEmpty()) {
+                    Work popWork = stack.pop();
+                    //if()
+                }*/
                 answer.add(beforeWork.name);
             }
             beforeWork = pollWork;
