@@ -1,3 +1,5 @@
+package programmers.practice;
+
 public class Solution_0907_6 {
 
     public static void main(String[] args) {

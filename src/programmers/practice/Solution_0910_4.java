@@ -1,6 +1,8 @@
-package programmers;
+package programmers.practice;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Solution_0910_4 {
 

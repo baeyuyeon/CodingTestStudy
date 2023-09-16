@@ -1,6 +1,11 @@
-package programmers;
+package programmers.practice;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Solution_0907_3 {
 

@@ -1,6 +1,7 @@
-package programmers;
+package programmers.practice;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Solution_0906_4 {
 

@@ -1,4 +1,4 @@
-package programmers;
+package programmers.practice;
 
 public class Solution_0908_1 {
 
